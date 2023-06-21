@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 // Object to store requested songs by date
-const requestedSongsByDate = {};
+const requestedSongsByDate = {"Mon Jun 19 2023":[{"name":"김지오","studentNumber":"10508","songTitle":"오랜 날 오랜 밤","singer":"악뮤"},{"name":"구태윤","studentNumber":"11202","songTitle":"이브,프시케 그리고 부른 수염의 아내","singer":"르세라핌"},{"name":"이서현","studentNumber":"11223","songTitle":"Good As It Gets","singer":"이서현"},{"name":"이승준","studentNumber":"20719","songTitle":"가로수 그늘 아래에 서면","singer":"이승준"},{"name":"정재용","studentNumber":"10529","songTitle":"uptown funk","singer":"Bruno Mars"},{"name":"김세원 ","studentNumber":"10205","songTitle":"Broken Melodies ","singer":"NCT DREAM"},{"name":"","studentNumber":"","songTitle":"","singer":""},{"name":"천주원","studentNumber":"10530","songTitle":"손오공","singer":"세븐틴"}],"Tue Jun 20 2023":[{"name":"구태윤","studentNumber":"11202","songTitle":"작은 것들을 위한 시","singer":"방탄"},{"name":"이세은","studentNumber":"11023","songTitle":"척","singer":"마마무"}]};
 
 // Array to store the blacklist
 const blacklist = [];
@@ -105,11 +105,14 @@ app.get('/', (req, res) => {
           font-family: Arial, sans-serif;
           margin: 40px;
         }
-        h1 {
-          margin-bottom: 20px;
+        div {
+          padding: 10px;
+          border-radius: 6px;
+          width: 300px;
+          background-color: #909090;
         }
-        p {
-          margin-bottom: 10px;
+        code {
+          color: white;
         }
       </style>
     </head>
@@ -118,20 +121,18 @@ app.get('/', (req, res) => {
       <p>
         This backend server allows you to make song requests and view the requested songs.
       </p>
-      <p>
-        To make a song request, send a POST request to the <code>/song-request</code> endpoint with the following JSON payload:
-        <br>
-        <pre>
-          {
-            "name": "Your Name",
-            "studentNumber": "Your Student Number",
-            "songTitle": "Song Title",
-            "singer": "Singer/Band Name"
-          }</pre>
-      </p>
-      <p>
-        To view the requested songs, send a GET request to the <code>/view-request</code> endpoint.
-      </p>
+      <p>To make a song request, send a POST request to the <div><code>/song-request</code></div> endpoint with the following JSON payload:</p><br>
+      <div>
+        <code>
+          {<br>
+            &emsp;"name": "Your Name",<br>
+            &emsp;"studentNumber": "Your Student Number",<br>
+            &emsp;"songTitle": "Song Title",<br>
+            &emsp;"singer": "Singer/Band Name"<br>
+          }
+        </code>
+      </div>
+      <p>To view the requested songs, send a GET request to the <div><code>/view-request</code></div> endpoint.</p>
     </body>
     </html>    
     `

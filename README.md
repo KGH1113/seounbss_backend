@@ -20,13 +20,13 @@ This is a Node.js Express backend for a song request website. It allows users to
 1. Clone the repository:
 
    ```
-   git clone <repository-url>
+   git clone https://github.com/KGH1113/seounbss_backend.git
    ```
 
 2. Navigate to the project directory:
 
    ```
-   cd song-request-backend
+   cd seounbss_backend
    ```
 
 3. Install the dependencies:
@@ -34,11 +34,15 @@ This is a Node.js Express backend for a song request website. It allows users to
    ```
    npm install
    ```
+   or
+   ```
+   npm i
+   ```
 
 4. Start the server:
 
    ```
-   npm start
+   node index.js
    ```
 
    The server will start running on `http://localhost:3000`.
@@ -54,6 +58,14 @@ This is a Node.js Express backend for a song request website. It allows users to
   If the request is invalid, an error message will be returned.
 
 - To view the list of requested songs, send a GET request to `/view-request`. The server will respond with a JSON array of requested songs.
+- To view all of the requests from now on, send a GET request to `/view-all-requests`. The server will respond with a JSON array of all requested songs.
+
+- To make a suggestion request, send a POST request to `/suggestion-request` with the following parameters in the request body:
+  - `name`: Name of the applicant
+  - `studentNumber`: Student number of the applicant
+  - `suggestion`: Suggestion content
+
+- To view the suggestion, send a GET request to the `/view-suggestion`. The server will respond with a JSON array of requested suggestions.
 
 ## Contributing
 

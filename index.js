@@ -164,6 +164,7 @@ app.get('/', (req, res) => {
         </code>
       </div>
       <p>To view the requested songs, send a GET request to the <div><code>/view-request</code></div> endpoint.</p>
+      <p>To view all of the requests from now on, send a GET request to <div><code>/view-all-requests.</code></div> The server will respond with a JSON array of all requested songs.</p>
       <br>
       <br>
       <br>

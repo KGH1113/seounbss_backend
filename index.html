@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Song Request Backend</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to the SeounBSS Backend</h1>
+    <p>
+      This backend server allows you to make song requests, view the requested
+      songs, request the suggestions and view the suggestions.
+    </p>
+    <p>
+      To make a song request, send a POST request to the
+      <code>/song-request</code> endpoint with the following JSON payload:
+    </p>
+    <br />
+    <code>
+      {<br />
+      &emsp;"name": "Your Name",<br />
+      &emsp;"studentNumber": "Your Student Number",<br />
+      &emsp;"songTitle": "Song Title",<br />
+      &emsp;"singer": "Singer/Band Name"<br />
+      }
+    </code>
+    <p>
+      To view the requested songs, send a GET request to the
+      <code>/view-request</code> endpoint.
+    </p>
+    <p>
+      To view all of the requests from now on, send a GET request to
+      <code>/view-all-requests.</code> The server will respond with a JSON array
+      of all requested songs.
+    </p>
+    <br />
+    <br />
+    <br />
+    <p>
+      To make a suggestion request, send a POST request to the
+      <code>/suggestion-request</code> endpoint the following JSON payload:
+    </p>
+    <br />
+    <code>
+      {<br />
+      &emsp;"name": "Your Name",<br />
+      &emsp;"studentNumber": "Your Student Number",<br />
+      &emsp;"suggestion": "Suggestion content"<br />
+      }
+    </code>
+    <p>
+      To view the suggestion, send a GET request to the
+      <code>/view-suggestion</code> endpoint.
+    </p>
+  </body>
+</html>

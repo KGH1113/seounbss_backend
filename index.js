@@ -125,64 +125,7 @@ app.get('/view-suggestion', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send(
-    `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Song Request Backend</title>
-      <style>
-        body {
-          font-family: Arial, sans-serif;
-          margin: 40px;
-        }
-        div {
-          padding: 10px;
-          border-radius: 6px;
-          width: 300px;
-          background-color: #909090;
-        }
-        code {
-          color: white;
-        }
-      </style>
-    </head>
-    <body>
-      <h1>Welcome to the SeounBSS Backend</h1>
-      <p>
-        This backend server allows you to make song requests, view the requested songs, request the suggestions and view the suggestions.
-      </p>
-      <p>To make a song request, send a POST request to the <div><code>/song-request</code></div> endpoint with the following JSON payload:</p><br>
-      <div>
-        <code>
-          {<br>
-            &emsp;"name": "Your Name",<br>
-            &emsp;"studentNumber": "Your Student Number",<br>
-            &emsp;"songTitle": "Song Title",<br>
-            &emsp;"singer": "Singer/Band Name"<br>
-          }
-        </code>
-      </div>
-      <p>To view the requested songs, send a GET request to the <div><code>/view-request</code></div> endpoint.</p>
-      <p>To view all of the requests from now on, send a GET request to <div><code>/view-all-requests.</code></div> The server will respond with a JSON array of all requested songs.</p>
-      <br>
-      <br>
-      <br>
-      <p>To make a suggestion request, send a POST request to the <div><code>/suggestion-request</code></div> endpoint the following JSON payload:</p><br>
-      <div>
-        <code>
-          {<br>
-            &emsp;"name": "Your Name",<br>
-            &emsp;"studentNumber": "Your Student Number",<br>
-            &emsp;"suggestion": "Suggestion content"<br>
-          }
-        </code>
-      </div>
-      <p>To view the suggestion, send a GET request to the <div><code>/view-suggestion</code></div> endpoint.</p>
-    </body>
-    </html>    
-    `
-  );
+  res.sendFile(__dirname + '/index.html');
 });
 
 // Start the server

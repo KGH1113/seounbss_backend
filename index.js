@@ -236,6 +236,7 @@ app.post("/delete-song-request", (req, res) => {
   requestedSongsByDate[date] = requestedSongsByDate[date].filter(
     (element, index) => element.studentNumber != studentNumber
   );
+  res.status(200).send('success');
 });
 
 app.get("/view-request", (req, res) => {
@@ -274,6 +275,7 @@ app.post("/delete-suggestion-request", (req, res) => {
   requestedSuggestions = requestedSuggestions.filter(
     (element, index) => element.content != content
   );
+  res.status(200).send('success');
 });
 
 app.get("/view-suggestion", (req, res) => {

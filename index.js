@@ -101,12 +101,40 @@ const requestedSongsByDate = {
       songTitle: "썸 탈거야",
       singer: "볼빨간사춘기",
     },
+    { name: "test", studentNumber: "test", songTitle: "test", singer: "test" },
+    {
+      name: "test1",
+      studentNumber: "test1",
+      songTitle: "test1",
+      singer: "test1",
+    },
+    {
+      name: "test2",
+      studentNumber: "test2",
+      songTitle: "test2",
+      singer: "test2",
+    },
+    {
+      name: "test3",
+      studentNumber: "test3",
+      songTitle: "test3",
+      singer: "test3",
+    },
+    {
+      name: "test4",
+      studentNumber: "test4",
+      songTitle: "test4",
+      singer: "test4",
+    },
     {
       name: "구태윤",
       studentNumber: "11202",
       songTitle: "불타오르네",
       singer: "BTS",
     },
+  ],
+  "Thu Jun 29 2023": [
+    { name: "", studentNumber: "", songTitle: "", singer: "" },
   ],
 };
 const requestedSuggestions = [];
@@ -204,8 +232,10 @@ app.post("/song-request", (req, res) => {
 });
 
 app.post("/delete-song-request", (req, res) => {
-  const {date, studentNumber} = req.body;
-  requestedSongsByDate[date] = requestedSongsByDate[date].filter((element, index) => element.studentNumber != studentNumber);
+  const { date, studentNumber } = req.body;
+  requestedSongsByDate[date] = requestedSongsByDate[date].filter(
+    (element, index) => element.studentNumber != studentNumber
+  );
 });
 
 app.get("/view-request", (req, res) => {
@@ -239,9 +269,11 @@ app.post("/suggestion-request", (req, res) => {
   }
 });
 
-app.post('/delete-suggestion-request', (req, res) => {
-  const {content} = req.body;
-  requestedSuggestions = requestedSuggestions.filter((element, index) => element.content != content);
+app.post("/delete-suggestion-request", (req, res) => {
+  const { content } = req.body;
+  requestedSuggestions = requestedSuggestions.filter(
+    (element, index) => element.content != content
+  );
 });
 
 app.get("/view-suggestion", (req, res) => {

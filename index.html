@@ -2,24 +2,19 @@
 <html>
   <head>
     <title>Song Request Backend</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 40px;
-      }
-    </style>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
   </head>
-  <body>
+  <body style="margin: 40px;">
     <h1>Welcome to the SeounBSS Backend</h1>
-    <p>
+    <h2>
       This backend server allows you to make song requests, view the requested
       songs, request the suggestions and view the suggestions.
-    </p>
-    <p>
+    </h2>
+
+    <li>
       To make a song request, send a POST request to the
       <code>/song-request</code> endpoint with the following JSON payload:
-    </p>
-    <br />
+    </li>
     <code>
       {<br />
       &emsp;"name": "Your Name",<br />
@@ -28,23 +23,36 @@
       &emsp;"singer": "Singer/Band Name"<br />
       }
     </code>
-    <p>
+
+    <li>
+      To make a song request delete, send a POST request to the
+      <code>/delete-song-request</code> endpoint with following JSON payload:
+    </li>
+    <code>
+      {<br />
+      &emsp;"date": "Requested date",<br />
+      &emsp;"studentNumber": "Requester's Student Number"<br />
+      }
+    </code>
+
+    <li>
       To view the requested songs, send a GET request to the
       <code>/view-request</code> endpoint.
-    </p>
-    <p>
+    </li>
+
+    <li>
       To view all of the requests from now on, send a GET request to
       <code>/view-all-requests.</code> The server will respond with a JSON array
       of all requested songs.
-    </p>
+    </li>
     <br />
     <br />
     <br />
-    <p>
+
+    <li>
       To make a suggestion request, send a POST request to the
       <code>/suggestion-request</code> endpoint the following JSON payload:
-    </p>
-    <br />
+    </li>
     <code>
       {<br />
       &emsp;"name": "Your Name",<br />
@@ -52,9 +60,21 @@
       &emsp;"suggestion": "Suggestion content"<br />
       }
     </code>
-    <p>
+
+    <li>
+      To make a suggestion request delete, send a POST request to the
+      <code>/delete-suggestion-request</code> endpoint with following JSON
+      payload:
+    </li>
+    <code>
+      {<br />
+      &emsp;"content": "Content of the request"<br />
+      }
+    </code>
+
+    <li>
       To view the suggestion, send a GET request to the
       <code>/view-suggestion</code> endpoint.
-    </p>
+    </li>
   </body>
 </html>

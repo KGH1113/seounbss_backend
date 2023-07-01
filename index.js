@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 const requestedSongsByDate = {"Mon Jun 19 2023":[{"name":"김지오","studentNumber":"10508","songTitle":"오랜 날 오랜 밤","singer":"악뮤"},{"name":"구태윤","studentNumber":"11202","songTitle":"이브,프시케 그리고 부른 수염의 아내","singer":"르세라핌"},{"name":"이서현","studentNumber":"11223","songTitle":"Good As It Gets","singer":"이서현"},{"name":"이승준","studentNumber":"20719","songTitle":"가로수 그늘 아래에 서면","singer":"이승준"},{"name":"정재용","studentNumber":"10529","songTitle":"uptown funk","singer":"Bruno Mars"},{"name":"김세원 ","studentNumber":"10205","songTitle":"Broken Melodies ","singer":"NCT DREAM"},{"name":"천주원","studentNumber":"10530","songTitle":"손오공","singer":"세븐틴"}],"Tue Jun 20 2023":[{"name":"구태윤","studentNumber":"11202","songTitle":"작은 것들을 위한 시","singer":"방탄"},{"name":"이세은","studentNumber":"11023","songTitle":"척","singer":"마마무"}],"Wed Jun 21 2023":[{"name":"김리호","studentNumber":"10504","songTitle":"미안해","singer":"처리"},{"name":"구태윤","studentNumber":"11202","songTitle":"Hype boy","singer":"뉴진스"},{"name":"박우원","studentNumber":"20613","songTitle":"옛사랑","singer":"이문세"}],"Thu Jun 22 2023":[{"name":"강지후","studentNumber":"10601","songTitle":"썸 탈거야","singer":"볼빨간사춘기"},{"name":"구태윤","studentNumber":"11202","songTitle":"불타오르네","singer":"BTS"}],}
-const requestedSuggestions = [];
+let requestedSuggestions = [];
 
 const blacklist = [];
 const suggestion_blacklist = [];
@@ -153,6 +153,7 @@ app.post("/suggestion-request", (req, res) => {
 
 app.post("/delete-suggestion-request", (req, res) => {
   const { content } = req.body;
+  console.log(content);
   requestedSuggestions = requestedSuggestions.filter(
     (element, index) => element.content != content
   );

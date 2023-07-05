@@ -114,6 +114,14 @@ let requestedSuggestions = [
     studentNumber: "10314",
     suggestion:
       "에어컨 냉방은 아니더라도 제습은 매일 해주시면 안되나요? 올여름에 비가 엄청 많이 올거라는데.. 비올때만 이라도 제습정도는 틀게 해주세요.",
+    answer: "에어컨 냉방과 제습은 방송부 담당이 아닙니다.",
+  },
+  {
+    name: "Admin",
+    studentNumber: "Admin",
+    suggestion:
+      "방송부 일 겁나 잘하네... 특히 그 21201강구현인가? 그 방송부 웹사이트 개발자 일 겁나 잘하던데",
+    answer: "^^",
   },
 ];
 
@@ -252,11 +260,8 @@ app.post("/suggestion-request", (req, res) => {
 
 app.post("/delete-suggestion-request", (req, res) => {
   const { indexOfsuggestion } = req.body;
-  console.log(indexOfsuggestion, requestedSuggestions.length);
-  requestedSuggestions =
-    requestedSuggestions.length == 1
-      ? []
-      : requestedSuggestions.splice(indexOfsuggestion, 1);
+  console.log(indexOfsuggestion);
+  requestedSuggestions.splice(indexOfsuggestion, 1);
   console.log(requestedSuggestions);
   res.status(200).send("success");
 });

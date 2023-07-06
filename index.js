@@ -14,162 +14,7 @@ app.use((req, res, next) => {
 // Middleware to parse JSON data
 app.use(bodyParser.json());
 
-const requestedSongsByDate = {
-  "Mon Jun 19 2023": [
-    {
-      name: "김지오",
-      studentNumber: "10508",
-      songTitle: "오랜 날 오랜 밤",
-      singer: "악뮤",
-    },
-    {
-      name: "구태윤",
-      studentNumber: "11202",
-      songTitle: "이브,프시케 그리고 부른 수염의 아내",
-      singer: "르세라핌",
-    },
-    {
-      name: "이서현",
-      studentNumber: "11223",
-      songTitle: "Good As It Gets",
-      singer: "이서현",
-    },
-    {
-      name: "이승준",
-      studentNumber: "20719",
-      songTitle: "가로수 그늘 아래에 서면",
-      singer: "이승준",
-    },
-    {
-      name: "정재용",
-      studentNumber: "10529",
-      songTitle: "uptown funk",
-      singer: "Bruno Mars",
-    },
-    {
-      name: "김세원 ",
-      studentNumber: "10205",
-      songTitle: "Broken Melodies ",
-      singer: "NCT DREAM",
-    },
-    {
-      name: "천주원",
-      studentNumber: "10530",
-      songTitle: "손오공",
-      singer: "세븐틴",
-    },
-  ],
-  "Tue Jun 20 2023": [
-    {
-      name: "구태윤",
-      studentNumber: "11202",
-      songTitle: "작은 것들을 위한 시",
-      singer: "방탄",
-    },
-    {
-      name: "이세은",
-      studentNumber: "11023",
-      songTitle: "척",
-      singer: "마마무",
-    },
-  ],
-  "Wed Jun 21 2023": [
-    {
-      name: "김리호",
-      studentNumber: "10504",
-      songTitle: "미안해",
-      singer: "처리",
-    },
-    {
-      name: "구태윤",
-      studentNumber: "11202",
-      songTitle: "Hype boy",
-      singer: "뉴진스",
-    },
-    {
-      name: "박우원",
-      studentNumber: "20613",
-      songTitle: "옛사랑",
-      singer: "이문세",
-    },
-  ],
-  "Thu Jun 22 2023": [
-    {
-      name: "강지후",
-      studentNumber: "10601",
-      songTitle: "썸 탈거야",
-      singer: "볼빨간사춘기",
-    },
-    {
-      name: "구태윤",
-      studentNumber: "11202",
-      songTitle: "불타오르네",
-      singer: "BTS",
-    },
-  ],
-  "Wed Jul 05 2023": [
-    {
-      name: "이규백",
-      studentNumber: "10521",
-      songTitle: "Never Gonna Give You Up",
-      singer: "Rick Astley",
-    },
-    {
-      name: "김지오",
-      studentNumber: "10508",
-      songTitle: "무제(無題) (Untitled, 2014)",
-      singer: "G-DRAGON",
-    },
-    {
-      name: "한윤서",
-      studentNumber: "11032",
-      songTitle: "투바투",
-      singer: "네버랜드를 떠나며",
-    },
-    {
-      name: "김연아",
-      studentNumber: "20504",
-      songTitle: "Lemonade",
-      singer: "Nct",
-    },
-    {
-      name: "양세미",
-      studentNumber: "20917",
-      songTitle: "무한적야",
-      singer: "엔시티",
-    },
-    {
-      name: "박지안",
-      studentNumber: "20911",
-      songTitle: "봄날",
-      singer: "방탄",
-    },
-    {
-      name: "최승현",
-      studentNumber: "10431",
-      songTitle: "Steal The Show",
-      singer: "Lauv",
-    },
-    {
-      name: "구태윤",
-      studentNumber: "11202",
-      songTitle: "Tears",
-      singer: "소찬휘",
-    },
-    {
-      name: "정소율",
-      studentNumber: "20529",
-      songTitle: "My you",
-      singer: "Bts",
-    },
-    {
-      name: "김유안",
-      studentNumber: "20304",
-      songTitle: "Still with you",
-      singer: "정국",
-    },
-  ],
-};
+const requestedSongsByDate = {};
 let requestedSuggestions = [
   {
     name: "박율희",
@@ -193,7 +38,13 @@ const suggestion_blacklist = [];
 // Function to check if a song request is valid
 const isRequestValid = (name, studentNumber, songTitle, singer) => {
   const currentDate = new Date();
-  const currentDateString = currentDate.toDateString();
+  const currentDateString = new Date().toLocaleString("en-US", {
+    timeZone: "Asia/Seoul",
+    weekday: "short",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   // Reset requests each day
   if (!requestedSongsByDate[currentDateString]) {
@@ -268,7 +119,7 @@ app.post("/song-request", (req, res) => {
       year: "numeric",
       month: "long",
       day: "numeric",
-    }).split(',').join('');
+    });
 
     // Reset requests each day
     if (!requestedSongsByDate[currentDateString]) {
@@ -279,7 +130,7 @@ app.post("/song-request", (req, res) => {
 
     // Add the requested song to the array for the current date
     requestedSongs.push({ name, studentNumber, songTitle, singer });
-
+    console.log(requestedSongsByDate);
     res.status(200).send("노래가 성공적으로 신청되었습니다!");
   }
 });

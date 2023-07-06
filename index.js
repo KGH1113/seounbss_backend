@@ -129,7 +129,18 @@ app.post("/song-request", (req, res) => {
     const requestedSongs = requestedSongsByDate[currentDateString];
 
     // Add the requested song to the array for the current date
-    requestedSongs.push({ name, studentNumber, songTitle, singer });
+    requestedSongs.push({
+      name,
+      studentNumber,
+      songTitle,
+      singer,
+      time: new Date().toLocaleTimeString("en-US", {
+        timeZone: "Asia/Seoul",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+      }),
+    });
     console.log(requestedSongsByDate);
     res.status(200).send("노래가 성공적으로 신청되었습니다!");
   }

@@ -268,7 +268,7 @@ app.post("/song-request", (req, res) => {
       year: "numeric",
       month: "long",
       day: "numeric",
-    });
+    }).split(',').join('');
 
     // Reset requests each day
     if (!requestedSongsByDate[currentDateString]) {

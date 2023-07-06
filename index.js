@@ -107,6 +107,68 @@ const requestedSongsByDate = {
       singer: "BTS",
     },
   ],
+  "Wed Jul 05 2023": [
+    {
+      name: "이규백",
+      studentNumber: "10521",
+      songTitle: "Never Gonna Give You Up",
+      singer: "Rick Astley",
+    },
+    {
+      name: "김지오",
+      studentNumber: "10508",
+      songTitle: "무제(無題) (Untitled, 2014)",
+      singer: "G-DRAGON",
+    },
+    {
+      name: "한윤서",
+      studentNumber: "11032",
+      songTitle: "투바투",
+      singer: "네버랜드를 떠나며",
+    },
+    {
+      name: "김연아",
+      studentNumber: "20504",
+      songTitle: "Lemonade",
+      singer: "Nct",
+    },
+    {
+      name: "양세미",
+      studentNumber: "20917",
+      songTitle: "무한적야",
+      singer: "엔시티",
+    },
+    {
+      name: "박지안",
+      studentNumber: "20911",
+      songTitle: "봄날",
+      singer: "방탄",
+    },
+    {
+      name: "최승현",
+      studentNumber: "10431",
+      songTitle: "Steal The Show",
+      singer: "Lauv",
+    },
+    {
+      name: "구태윤",
+      studentNumber: "11202",
+      songTitle: "Tears",
+      singer: "소찬휘",
+    },
+    {
+      name: "정소율",
+      studentNumber: "20529",
+      songTitle: "My you",
+      singer: "Bts",
+    },
+    {
+      name: "김유안",
+      studentNumber: "20304",
+      songTitle: "Still with you",
+      singer: "정국",
+    },
+  ],
 };
 let requestedSuggestions = [
   {
@@ -200,8 +262,13 @@ app.post("/song-request", (req, res) => {
   if (requestValidity) {
     res.status(400).json({ error: requestValidity });
   } else {
-    const currentDate = new Date();
-    const currentDateString = currentDate.toDateString();
+    const currentDateString = new Date().toLocaleString("en-US", {
+      timeZone: "Asia/Seoul",
+      weekday: "short",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
 
     // Reset requests each day
     if (!requestedSongsByDate[currentDateString]) {

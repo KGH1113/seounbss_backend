@@ -141,8 +141,13 @@ app.post("/delete-song-request", (req, res) => {
 });
 
 app.get("/view-request", (req, res) => {
-  const currentDate = new Date();
-  const currentDateString = currentDate.toDateString();
+  const currentDateString = new Date().toLocaleString("en-US", {
+    timeZone: "Asia/Seoul",
+    weekday: "short",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   // Retrieve the requested songs for the current date
   const requestedSongs = requestedSongsByDate[currentDateString] || [];

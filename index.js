@@ -37,7 +37,6 @@ const suggestion_blacklist = [];
 
 // Function to check if a song request is valid
 const isRequestValid = (name, studentNumber, songTitle, singer) => {
-  const currentDate = new Date();
   const currentDateString = new Date().toLocaleString("en-US", {
     timeZone: "Asia/Seoul",
     weekday: "short",
@@ -55,7 +54,7 @@ const isRequestValid = (name, studentNumber, songTitle, singer) => {
 
   // Check if it's a weekend (Saturday or Sunday)
   const dayOfWeek = currentDate.getDay();
-  if (dayOfWeek === 0 || dayOfWeek === 6) {
+  if (currentDateString.split(', ')[0] === 'Sat' || currentDateString.split(', ')[0] === 'Sun') {
     return "주말에는 신청을 받지 않습니다.";
   }
 
